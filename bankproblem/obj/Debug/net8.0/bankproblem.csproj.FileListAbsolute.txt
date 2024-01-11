@@ -1,0 +1,14 @@
+C:\Users\K.G.rg22\Downloads\Assignments\bankproblem\bin\Debug\net8.0\bankproblem.exe
+C:\Users\K.G.rg22\Downloads\Assignments\bankproblem\bin\Debug\net8.0\bankproblem.deps.json
+C:\Users\K.G.rg22\Downloads\Assignments\bankproblem\bin\Debug\net8.0\bankproblem.runtimeconfig.json
+C:\Users\K.G.rg22\Downloads\Assignments\bankproblem\bin\Debug\net8.0\bankproblem.dll
+C:\Users\K.G.rg22\Downloads\Assignments\bankproblem\bin\Debug\net8.0\bankproblem.pdb
+C:\Users\K.G.rg22\Downloads\Assignments\bankproblem\obj\Debug\net8.0\bankproblem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\K.G.rg22\Downloads\Assignments\bankproblem\obj\Debug\net8.0\bankproblem.AssemblyInfoInputs.cache
+C:\Users\K.G.rg22\Downloads\Assignments\bankproblem\obj\Debug\net8.0\bankproblem.AssemblyInfo.cs
+C:\Users\K.G.rg22\Downloads\Assignments\bankproblem\obj\Debug\net8.0\bankproblem.csproj.CoreCompileInputs.cache
+C:\Users\K.G.rg22\Downloads\Assignments\bankproblem\obj\Debug\net8.0\bankproblem.dll
+C:\Users\K.G.rg22\Downloads\Assignments\bankproblem\obj\Debug\net8.0\refint\bankproblem.dll
+C:\Users\K.G.rg22\Downloads\Assignments\bankproblem\obj\Debug\net8.0\bankproblem.pdb
+C:\Users\K.G.rg22\Downloads\Assignments\bankproblem\obj\Debug\net8.0\bankproblem.genruntimeconfig.cache
+C:\Users\K.G.rg22\Downloads\Assignments\bankproblem\obj\Debug\net8.0\ref\bankproblem.dll
