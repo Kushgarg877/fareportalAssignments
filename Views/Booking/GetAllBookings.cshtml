@@ -1,0 +1,59 @@
+@model IEnumerable<flightbooking.Models.Kushbooking>
+
+@{
+    ViewData["Title"] = "GetAllBookings";
+}
+
+<h1>Your Booking Details are as follows</h1>
+
+<br>
+<br>
+
+<p>
+    <a asp-controller="Flight" asp-action="FlightBooking">Book A new Flight</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flightid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Custid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookdate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bookid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flightid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Custid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bookdate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit","Flight",new {  id=@item.Bookid  }) |
+                @Html.ActionLink("Details", "Details", new { id=@item.Bookid }) |
+                @Html.ActionLink("Delete", "Delete", new { id=@item.Bookid })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a asp-controller="Login" asp-action="Logout">Logout</a>
+</p>

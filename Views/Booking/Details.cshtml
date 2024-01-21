@@ -1,0 +1,81 @@
+@model flightbooking.Models.Kushbooking
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    @* <h4>Kushbooking</h4> *@
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Bookid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Bookid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Flightid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flightid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Flight.Flightname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flight.Flightname)
+        </dd>
+        <dt class = "col-sm-2">
+            @* @Html.DisplayNameFor("Source Airport Name") *@
+            @Html.DisplayNameFor(model => model.Flight.Arr.Aname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flight.Arr.Aname)
+        </dd>
+        <dt class = "col-sm-2">
+            @* @Html.DisplayNameFor("Source Location"); *@
+            @Html.DisplayNameFor(model => model.Flight.Arr.Alocation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flight.Arr.Alocation)
+        </dd>
+         <dt class = "col-sm-2"> 
+            @Html.DisplayNameFor(model => model.Flight.Dep.Aname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flight.Dep.Aname) 
+        </dd>@*
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Flight.Dep.Alocation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flight.Dep.Alocation) *@
+        @* </dd> *@
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Flight.Deptime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flight.Deptime)
+        </dd>
+         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Flight.Arrtime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Flight.Arrtime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Bookdate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Bookdate)
+        </dd>
+    </dl>
+</div>
+<br>
+<div>
+    @Html.ActionLink("Edit", "Edit","Flight", new {  id = Model.Bookid  })<br> |
+    <a asp-action="GetAllBookings">Back to List</a>
+</div>
