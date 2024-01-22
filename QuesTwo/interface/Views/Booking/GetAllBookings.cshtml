@@ -1,0 +1,52 @@
+@model IEnumerable<flightbooking.Models.Kushbook>
+
+@{
+    ViewData["Title"] = "GetAllBookings";
+}
+
+<h1>GetAllBookings</h1>
+
+<p>
+    <a asp-controller="Flight" asp-action="option">Search for new Flights</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlightsDid)
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.Custoid)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.Bookdate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bookid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightsDid)
+            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.Custoid)
+            </td> *@
+            <td>
+                @Html.DisplayFor(modelItem => item.Bookdate)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id=item.Bookid}) |
+                @Html.ActionLink("Delete", "Delete", new { id=@item.Bookid  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

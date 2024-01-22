@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Home Page";
+    
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome @ViewBag.Data </h1>
+
+    <p>
+        <a asp-controller="Flight" asp-action="option"><h4><b>Book A new Flight</b></h4></a>
+    </p>
+    <br>
+    <p>
+        <a asp-controller="Booking" asp-action="GetAllBookings"><h4><b>Your Booking details</b></h4></a>
+    </p>
+
+    <br>
+    <p>
+        <a asp-controller="Login" asp-action="details"><h4><b>Your Profile</b></h4></a> 
+    </p>
+
+    @* <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+    @* <a asp-controller="Login" asp-action="Logout">Logout</a> *@
+</div>

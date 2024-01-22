@@ -1,0 +1,48 @@
+@model flightbooking.Models.Kushcustomer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Your Profile</h1>
+
+<div>
+    @* <h4>Kushcustomer</h4> *@
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Custname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Custname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Custphno)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Custphno)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Custadr)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Custadr)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Custid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Custid)
+        </dd>
+        @* <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Custpwd)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Custpwd)
+        </dd> *@
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.Custid  }) |
+    <a asp-action="Welcome">Home</a>
+</div>

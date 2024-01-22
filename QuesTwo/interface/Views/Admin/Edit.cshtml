@@ -1,0 +1,56 @@
+@model flightbooking.Models.Flightdetail
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Flightdetail</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @* <div class="form-group">
+                <label asp-for="FlightDid" class="control-label"></label>
+                <input asp-for="FlightDid" class="form-control" />
+                <span asp-validation-for="FlightDid" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="Source" class="control-label"></label>
+                @* <input asp-for="Source" class="form-control" /> *@
+                <select asp-for="Source" class="form-control" asp-items="ViewBag.fdes"> </select>
+                <span asp-validation-for="Source" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Destination" class="control-label"></label>
+                @* <input asp-for="Destination" class="form-control" /> *@
+                <select asp-for="Destination" class="form-control" asp-items="ViewBag.fded"> </select>
+                <span asp-validation-for="Destination" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Departure" class="control-label"></label>
+                <input asp-for="Departure" class="form-control" />
+                <span asp-validation-for="Departure" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="flightlist">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

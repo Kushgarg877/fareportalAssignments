@@ -1,0 +1,53 @@
+@model IEnumerable<flightbooking.Models.Kushbook>
+
+@{
+    ViewData["Title"] = "bookinglist";
+}
+
+<h1>List Of Bookings</h1>
+
+<p>
+    <a asp-action="flightlist">Back to home</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlightsDid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Custoid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookdate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bookid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightsDid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Custoid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bookdate)
+            </td>
+            <td>
+                @* @Html.ActionLink("Edit", "Edit", new {  id=item.bo  }) |
+                @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) | *@
+               @* @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,53 @@
+@model flightbooking.Models.Kushcustomer
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+@* <h4>Kushcustomer</h4> *@
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Custname" class="control-label"></label>
+                <input asp-for="Custname" class="form-control" />
+                <span asp-validation-for="Custname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Custphno" class="control-label"></label>
+                <input asp-for="Custphno" class="form-control" />
+                <span asp-validation-for="Custphno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Custadr" class="control-label"></label>
+                <input asp-for="Custadr" class="form-control" />
+                <span asp-validation-for="Custadr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Custid" class="control-label"></label>
+                <input asp-for="Custid" class="form-control" />
+                <span asp-validation-for="Custid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Custpwd" class="control-label"></label>
+                <input asp-for="Custpwd" class="form-control" type="password" />
+                <span asp-validation-for="Custpwd" class="text-danger"></span>
+            </div> 
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Welcome">Home</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
