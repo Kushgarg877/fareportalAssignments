@@ -1,5 +1,6 @@
 using System.Data;
 using flightbooking.Models;
+using Microsoft.AspNetCore.Components.Web.Virtualization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.Language;
@@ -15,12 +16,77 @@ namespace flightbooking.Controllers{
             db=_db;
         }
 
-        public ActionResult FlightBooking(){
-
-            ViewBag.fid = new SelectList(db.Kushairports,"Aid","Alocation");
-            return View();
+        public ActionResult option(){
+            ViewBag.Custid=(HttpContext.Session.GetString("cid"));
+            if(ViewBag.Custid!=null){
+            return View();}
+            return RedirectToAction("Login","Login");
         }
 
+        [HttpPost]
+        public ActionResult option(Place p){
+            ViewBag.Custid=(HttpContext.Session.GetString("cid"));
+            if(ViewBag.Custid!=null){
+            TempData["s"] = p.Source;
+            TempData["d"] = p.Destination;
+            return RedirectToAction("Avflights");}
+            return RedirectToAction("Login","Login");
+        }
+
+        public ActionResult Avflights(){
+            ViewBag.Custid=(HttpContext.Session.GetString("cid"));
+            if(ViewBag.Custid!=null){
+            Place p = new Place();
+            p.Source = TempData["s"].ToString();
+            p.Destination = TempData["d"].ToString();
+            var list=(  from i in db.Flightdetails
+                        where i.Source==p.Source && i.Destination==p.Destination
+                        select i
+                     ).ToList();
+            return View(list);}
+            else{
+                return RedirectToAction("Login","Login");
+            }
+            
+        }
+        
+        // public ActionResult Book(int id){
+        //     var list = (Flightdetail)db.Flightdetails.Where(x=>x.FlightDid==id);
+        //     return View(list);
+        // }
+
+    
+        public ActionResult Booked(int id){
+            ViewBag.Custname=HttpContext.Session.GetString("cname");
+            ViewBag.Custid=(HttpContext.Session.GetString("cid"));
+            if(ViewBag.Custid!=null){
+            ViewBag.Custid=HttpContext.Session.GetString("cid");
+            Flightdetail fd = db.Flightdetails.Where(x=>x.FlightDid==id).SingleOrDefault();
+            if(fd!=null){
+                Kushbook kb = new Kushbook();
+                kb.Custoid = int.Parse(ViewBag.Custid);
+                kb.FlightsDid = fd.FlightDid;
+                kb.Bookdate = DateTime.Now;
+                db.Kushbooks.Add(kb);
+                db.SaveChanges();
+                return View();
+            }
+            return RedirectToAction("Welcome","Login");}
+            return RedirectToAction("Login","Login");
+            
+        }
+
+        // public ActionResult FlightBooking(){
+        //     ViewBag.Custid=HttpContext.Session.GetString("cid");
+        //     if(ViewBag.Custid!=null){
+        //         ViewBag.fid = new SelectList(db.Kushairports,"Aid","Alocation");
+        //         return View();
+        //     }
+        //     else{
+        //         return RedirectToAction("Login","Login");
+        //     }
+        // }
+/*
         [HttpPost]
         public ActionResult FlightBooking(Kushflight f){
             ViewBag.Custid=HttpContext.Session.GetString("cid");
@@ -66,7 +132,7 @@ namespace flightbooking.Controllers{
             db.SaveChanges();
 
             return RedirectToAction("GetAllBookings","Booking");
-        }
+        }*/
 
     }
 }

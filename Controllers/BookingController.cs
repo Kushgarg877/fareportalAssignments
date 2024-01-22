@@ -13,33 +13,63 @@ namespace flightbooking.Controllers{
         }
 
         public ActionResult GetAllBookings(){
-
+            ViewBag.Custid=(HttpContext.Session.GetString("cid"));
+            if(ViewBag.Custid!=null){
              ViewBag.Custid=HttpContext.Session.GetString("cid");
             if(ViewBag.Custid!=null){
-                var list = (from i in db.Kushbookings
-                            where i.Custid == int.Parse(HttpContext.Session.GetString("cid")) 
+                var list = (from i in db.Kushbooks
+                            where i.Custoid == int.Parse(HttpContext.Session.GetString("cid")) 
                             select i).ToList();
                 return View(list);
+            }
+            else{
+                return RedirectToAction("Login","Login");
+            }}
+            return RedirectToAction("Login","Login");
+        }
+
+        public ActionResult Details(int id){
+            ViewBag.Custid=(HttpContext.Session.GetString("cid"));
+            if(ViewBag.Custid!=null){
+
+            ViewBag.Custid=HttpContext.Session.GetString("cid");
+            if(ViewBag.Custid!=null){
+                var results = db.Kushbooks.Include(x => x.FlightsD);
+            var kb = results.Where(x => x.Bookid ==id).SingleOrDefault();
+            
+            return View(kb);
+            }
+
+            return RedirectToAction("Login","Login");}
+            return RedirectToAction("Login","Login");
+            
+        }
+
+
+        [HttpGet]
+        public ActionResult Delete(int id){
+            ViewBag.Custid=(HttpContext.Session.GetString("cid"));
+            if(ViewBag.Custid!=null){
+            Kushbook kb = db.Kushbooks.Where(x => x.Bookid==id).SingleOrDefault();
+            return View(kb);}
+            return RedirectToAction("Login","Login");
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id){
+            Kushbook kb = db.Kushbooks.Where(x => x.Bookid==id).SingleOrDefault();
+            if(kb!=null){
+                db.Kushbooks.Remove(kb);
+            db.SaveChanges();
+            return RedirectToAction("GetAllBookings");
             }
             else{
                 return RedirectToAction("Login","Login");
             }
         }
 
-        public ActionResult Details(int id){
-
-            ViewBag.Custid=HttpContext.Session.GetString("cid");
-            if(ViewBag.Custid!=null){
-                var results = db.Kushbookings.Include(x => x.Flight).ThenInclude(x => x.Arr);
-            // var result = db.Kushbookings.Include(x => x.Flight).ThenInclude(x => x.Dep);
-            var kb = results.Where(x => x.Bookid ==id).SingleOrDefault();
-            
-            return View(kb);
-            }
-
-            return RedirectToAction("Login","Login");
-            
-        }
+        
 
 
 
@@ -61,31 +91,31 @@ namespace flightbooking.Controllers{
 
 
 
-        public ActionResult Delete(int id){
+        // public ActionResult Delete(int id){
             
-            ViewBag.Custid=HttpContext.Session.GetString("cid");
-            if(ViewBag.Custid!=null){
-                Kushbooking kb =db.Kushbookings.Where(x => x.Bookid==id).SingleOrDefault();
-                return View(kb);
-            }
-            else{
-                return RedirectToAction("Login","Login");
-            }
-        }
+        //     ViewBag.Custid=HttpContext.Session.GetString("cid");
+        //     if(ViewBag.Custid!=null){
+        //         Kushbooking kb =db.Kushbookings.Where(x => x.Bookid==id).SingleOrDefault();
+        //         return View(kb);
+        //     }
+        //     else{
+        //         return RedirectToAction("Login","Login");
+        //     }
+        // }
 
-        [HttpPost]
-        [ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id){
-            Kushbooking kb =db.Kushbookings.Where(x => x.Bookid==id).SingleOrDefault();
-            if(kb!=null){
-                db.Kushbookings.Remove(kb);
-            db.SaveChanges();
-            return RedirectToAction("GetAllBookings");
-            }
-            else{
-                return RedirectToAction("Login","Login");
-            }
+        // [HttpPost]
+        // [ActionName("Delete")]
+        // public ActionResult DeleteConfirmed(int id){
+        //     Kushbooking kb =db.Kushbookings.Where(x => x.Bookid==id).SingleOrDefault();
+        //     if(kb!=null){
+        //         db.Kushbookings.Remove(kb);
+        //     db.SaveChanges();
+        //     return RedirectToAction("GetAllBookings");
+        //     }
+        //     else{
+        //         return RedirectToAction("Login","Login");
+        //     }
             
-        }
+        // }
     }  
 }
